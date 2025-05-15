@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 
 export default function Navbar(props) {
+  const changeTheme = (theme) => {
+    document.body.classList.remove('bg-primary', 'bg-secondary', 'bg-success', 'bg-danger');
+    document.body.classList.add(theme);
+    props.showAlert(`Theme changed to ${theme}`, "success");
+  };
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
       <div className="container-fluid">
@@ -54,6 +59,12 @@ export default function Navbar(props) {
               <label className="form-check-label" htmlFor="flexSwitchCheckGreen">
                 Light/Dark Green
               </label>
+            </div>
+            <div className="theme-buttons" style={{ display: 'flex', gap: '10px' }}>
+              <button className="btn btn-primary" onClick={() => changeTheme('bg-primary')}>Primary</button>
+              <button className="btn btn-secondary" onClick={() => changeTheme('bg-secondary')}>Secondary</button>
+              <button className="btn btn-success" onClick={() => changeTheme('bg-success')}>Success</button>
+              <button className="btn btn-danger" onClick={() => changeTheme('bg-danger')}>Danger</button>
             </div>
           </div>
         </div>

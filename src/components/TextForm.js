@@ -40,7 +40,7 @@ export default function TextForm(props) {
         console.log("Copying text: "+text);
         props.showAlert("Copied to clipboard","success");
     }
-    let textCleaned=text.split(" ");
+    let textCleaned=text.split(/\s+/);
     textCleaned = textCleaned.filter(item => item !== "");
     return (
         <>
